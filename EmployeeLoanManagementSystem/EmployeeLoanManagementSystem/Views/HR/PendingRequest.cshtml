@@ -1,0 +1,53 @@
+﻿@model System.Data.DataTable
+
+@{
+    /**/
+
+    ViewBag.Title = "PendingRequest";
+}
+<head>
+    <style>
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+    </style>
+</head>
+<h2 style="padding-top:100px;text-align:center">Employee Against Pending Requests</h2>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th style="display:none;">
+            Id
+        </th>
+        <th style="display:none;">LoanApplyId</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Loan Money</th>
+        <th>Request Date</th>
+        <th>Loan Category</th>
+        <th>Edit Response</th>
+        <th>View Details</th>
+
+    </tr>
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+    <tr>
+        <td style="display:none;">
+            @Model.Rows[i][0]
+        </td>
+        <td style="display:none;">@Model.Rows[i][1]</td>
+        <td>@Model.Rows[i][2]</td>
+        <td>@Model.Rows[i][3]</td>
+        <td>@Model.Rows[i][4]</td>
+        <td>@Model.Rows[i][5]</td>
+        <td>@Model.Rows[i][6]</td>
+        <td>@Html.ActionLink("Details", "viewreq", new { @ide = @Model.Rows[i][1] }, null)</td>
+        <td>@Html.ActionLink("Edit Response", "Edetails", new { @ide = @Model.Rows[i][0], @idee = @Model.Rows[i][1] }, null)</td>
+
+    </tr>
+    }
+</table>
+
+
+
+

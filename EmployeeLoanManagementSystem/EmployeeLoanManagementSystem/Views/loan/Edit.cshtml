@@ -1,0 +1,296 @@
+﻿@model System.Data.DataTable
+
+
+@{
+    /**/
+
+    ViewBag.Title = "Edit";
+}
+
+
+<head>
+    <style type="text/css">
+
+        body {
+        }
+
+        .container {
+            overflow: auto;
+        }
+
+        .registration {
+            color: black;
+            font-size: 40px;
+            font-family: Agency FB;
+            font-weight: 700;
+            border-bottom-style: ridge;
+        }
+
+        .row {
+        }
+
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0,0,0,.5);
+            -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+        }
+
+
+        .btn.hover {
+            background-color: aqua;
+        }
+
+        label {
+            font-size: 22px;
+        }
+
+        .btn-danger {
+            border-radius: 0px;
+        }
+    </style>
+
+</head>
+
+
+@for (int i = 0; i < Model.Rows.Count; i++)
+{
+    using (Html.BeginForm("Edit", "loan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+
+    {
+
+<div class="container">
+
+
+
+    <div class="col-md-8 col-md-offset-3">
+        <img src="/images/syslogo.png" align="left" style="height:140px; padding-top:15px;padding-left:350px">
+    </div>
+    <center style="text-align:center ;
+	padding-top: 130px;padding-bottom:20px"><b class="registration">LOAN APPLICATION FORM</b></center>
+    <hr />
+    <h2 style="padding-top:30px">Edit</h2>
+
+    <h4 align="left" style="padding-top:30px">APPLY FOR LOAN</h4>
+    <hr />
+    @if (Convert.ToInt32(@Model.Rows[i][0]) == 1)
+    {
+        <div class="form-group">
+            <h5>Loan Category :</h5>
+            <br />
+            <p style="font-size: 15px">
+                Loan Against Provident Fund:
+                <input checked="checked"
+                       id="Category"
+                       name="Category"
+                       type="radio"
+                       value="AgainstProvidentFund" />
+                <br />
+            <p style="font-size: 15px">
+                General Loan:
+                <input id="Category"
+                       name="Category"
+                       type="radio"
+                       value="General" />
+                @*<input align="left" type="radio" name="provident" style="height:30px;width:50px" class="PFUND" /><p style="font-size: 15px">
+                        Loan Against Provident Fund<br>
+                        <input align="left" type="radio" name="general" style="height:30px;width:50px" class="General" />
+                    <p style="font-size: 15px">General Loan<br>*@
+        </div>}
+    @if (Convert.ToInt32(@Model.Rows[i][0]) == 2)
+    {
+        <div class="form-group">
+            <h5>Loan Category :</h5>
+            <br />
+            <p style="font-size: 15px">
+                Loan Against Provident Fund:
+                <input id="Category"
+                       name="Category"
+                       type="radio"
+                       value="AgainstProvidentFund" />
+                @*  @Html.RadioButton("Category", "AgainstProvidentFund")*@
+                <br />
+            <p style="font-size: 15px">
+                General Loan:
+
+                <input checked="checked"
+                       id="Category"
+                       name="Category"
+                       type="radio"
+                       value="General" />
+
+                @*<input align="left" type="radio" name="provident" style="height:30px;width:50px" class="PFUND" /><p style="font-size: 15px">
+                        Loan Against Provident Fund<br>
+                        <input align="left" type="radio" name="general" style="height:30px;width:50px" class="General" />
+                    <p style="font-size: 15px">General Loan<br>*@
+        </div>}
+    @if (Convert.ToInt32(@Model.Rows[i][0]) == 2)
+    {
+        <div class="form-group">
+            <h5>Loan Purpose :</h5>
+            <br />
+            <p style="" font-size: 15px">You are required to select the category written below if you have choosen loan against provident fund</p><br />
+            <p style="font-size: 15px">Property @Html.RadioButton("Purpose", "Property")  </p>
+            <p style="font-size: 15px">
+                AutoMobile @Html.RadioButton("Purpose", "Automobile")
+            </p>
+        </div>
+    }
+    @if (Convert.ToInt32(@Model.Rows[i][0]) == 1)
+    {
+        if ((@Model.Rows[i][1]).ToString() == "Y")
+        {
+            <div class="form-group">
+                <h5>Loan Purpose :</h5>
+                <br />
+                <p style="" font-size: 15px">You are required to select the category written below if you have choosen loan against provident fund</p><br />
+                <p style="font-size: 15px">
+                    Property:    <input checked="checked"
+                                        id="Purpose"
+                                        name="Purpose"
+                                        type="radio"
+                                        value="Property" />
+                </p>
+                <p style="font-size: 15px">
+                    AutoMobile:<input id="Purpose"
+                                      name="Purpose"
+                                      type="radio"
+                                      value="Automobile" />
+                </p>
+            </div>
+        }
+    }
+    @if (Convert.ToInt32(@Model.Rows[i][0]) == 1)
+    {
+        if ((@Model.Rows[i][2]).ToString() == "Y")
+        {
+            <div class="form-group">
+                <h5>Loan Purpose :</h5>
+                <br />
+                <p style="" font-size: 15px">You are required to select the category written below if you have choosen loan against provident fund</p><br />
+                <p style="font-size: 15px">
+                    Property: <input id="Purpose"
+                                     name="Purpose"
+                                     type="radio"
+                                     value="Property" />
+                </p>
+                <p style="font-size: 15px">
+                    AutoMobile:<input checked="checked"
+                                      id="Purpose"
+                                      name="Purpose"
+                                      type="radio"
+                                      value="Automobile" />
+                </p>
+            </div>
+        }
+    }
+
+
+</div>
+       
+        <div class="form-group">
+            <h5> Loan Requested  :</h5>
+            <input type="number" name="loanreq" style="font-size: 20px;height:50px;width:550px" value=@Model.Rows[i][3] />
+        </div>
+       
+        <div class="form-group">
+            <h5> Number Of Installments Acquired  :</h5>
+            <input type="number" name="instalacq" style="font-size: 20px;height:50px;width:550px" value=@Model.Rows[i][4] />
+        </div>
+        
+        <div class="form-group">
+            <h5> Installments Money  :</h5>
+            <input type="number" name="instalmoney" style="font-size: 20px;height:50px;width:550px"value=@Model.Rows[i][7]  />
+        </div>
+        <hr />
+        <h4 align="left">ACKNOWLEDGEMENT</h4>
+        <hr />
+        <div class="form-group">
+
+            <p style="" font-size: 15px">I hereby agree that the information given is true, accurate and complete as of the date of this application submission </p><br />
+            <p style="font-size: 15px">Yes<input align="left" type="radio" name="ack" style=" height:30px;width:50px" class="Male" />
+        </div>
+        <div class="form-group">
+            <p>The employee needs to download the template. Print it and fill it. Upload the image of the filled agreement document  in the upload button tab below</p>
+            <a href="~/LoanApplies/Download">
+                <input class="btn " style="font-family:Arial;font-size:12px;height:50px;width:160px" type="button" value="Download" />
+            </a>
+        </div>
+        <div class="form-group">
+            <h5>Agreement Document :</h5>
+            <br />
+            @{
+                string s = @Model.Rows[i][8].ToString();
+
+                string a = "assets/agreementdoc/fyp1.jpg";
+
+                string p = @Model.Rows[i][8].ToString();
+            <a href="@s" style="height:100%;width:100%">
+                <centre> <img align="middle" src="@s" style="height:250px;width:350px"></centre>
+            </a>
+
+
+            }
+
+            @* <input type="text" value="@Url.Content(Model.Rows[i][8].ToString())" *@
+            <p>If you want to update document, select "Yes" below </p>
+            <p style="font-size: 15px">
+                Yes
+                <input id="newag"
+                       name="newag"
+                       type="radio"
+                       value="Yes" />
+
+            <p style="font-size: 15px">
+                No
+                <input checked="checked"
+                       id="newag"
+                       name="newag"
+                       type="radio"
+                       value="No" />
+                @*<input align="left" type="radio" name="provident" style="height:30px;width:50px" class="PFUND" /><p style="font-size: 15px">
+                Loan Against Provident Fund<br>
+                <input align="left" type="radio" name="general" style="height:30px;width:50px" class="General" />
+            <p style="font-size: 15px">General Loan<br>*@
+        </div>
+        <div class="form-group">
+            <p>Upload the image of the filled agreement document  in the upload button tab below</p>
+            <input type="file" id="image1" name="image1" value=@Model.Rows[i][7] />
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+
+        <!-- <div class="form-group">
+                        <a href="~/Admin/Dashboard">
+                            <input class="btn " style="font-family:Arial;font-size:18px;height:50px;width:120px" type="button" value="Log In" />
+                        </a>
+                        <a href="~/Admin/Reset">
+                            <input class="btn " style="font-family:Arial;font-size:18px;height:50px;width:150px" type="button" value="Reset Password" />
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>-->
+
+
+
+
+
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

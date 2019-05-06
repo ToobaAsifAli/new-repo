@@ -1,0 +1,99 @@
+﻿@model IEnumerable<EmployeeLoanManagementSystem.Models.LoanApply>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanMoney)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfInstallments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstallmentStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstallmentEndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanAgreement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanForProperty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanForAutomobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanCategory1.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanDocumentVerify.IsDefaulter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanRequestStatu.RequestStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfInstallments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstallmentStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstallmentEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanAgreement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanForProperty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanForAutomobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanCategory1.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanDocumentVerify.IsDefaulter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanRequestStatu.RequestStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LoanApplyId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LoanApplyId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LoanApplyId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "loanpolicies";
+}
+<head>
+    <style type="text/css">
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+        .bullets {
+        }
+
+            .bullets li {
+                list-style-type: circle;
+                font-size: 16px;
+                font-family: 'Times New Roman'
+            }
+            .para{
+                font-size:16px;
+                font-family:'Times New Roman'
+            }
+        .para1 {
+            font-size: 18px;
+            font-family: 'Times New Roman'
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <html>
+    <body>
+        <div class="container">
+
+            <h2 style="padding-top:100px;text-align:center">LOAN POLICIES</h2>
+
+            <img src="/images/syslogo.png" align="left" style="height:110px; padding-left:800px">
+            <h3 style="padding-top:150px">LOAN CATEGORIES</h3>
+            <p class="para">There will be two loan categories:</p>
+            <ul class="bullets">
+                <li>Loan Against Provident Fund</li>
+                <li>General Loan or Personal Loan</li>
+            </ul>
+            <p class="para">The loan policies for the categories listed above are given below:</p>
+            <h3>LOAN AGAINST PROVIDENT FUND</h3>
+            <ul class="bullets">
+                <li>Loans will be interest free.</li>
+                <li>Number of installments for loan return must be chosen in a way that loan should be returned within 4 years.</li>
+                <li>Minimum installment will be of two thousand rupees.</li>
+                <li>The loan limit taken against Provident fund must not exceed deposited provident fund of specific employee.</li>
+                <li>Provident fund will only be granted for purchase of property or automobile.</li>
+                <li>Installments will be automatically deducted from the salary.</li>
+                <li>If employee left without paying installments, it would depend on senior management to confiscate provident fund or to grant him fund by deducting remaining loan money or to grant him provident fund without any deduction if only few installments are left by acknowledging the employee’s services.</li>
+                <li>Agreement document template will be provided which contains terms regarding employee will pay the loan completely. Without paying loan, employee will not leave company. If employee left or some serious consequences occur, it will depend on senior management whether to confiscate provident fund or to grant him fund by deducting remaining loan money or to grant him provident fund without any deduction if only few installments are left by acknowledging the employee’s services.</li>
+                <li>Signed agreement document must be uploaded at time of applying for loan and the signed document must match the template provided.</li>
+                <li>Documents regarding purchased automobile or property must be provided within 30 days from loan acceptance.</li>
+                <li>If documents regarding purchased automobile or property are not provided within 30 days from loan acceptance, then the employee will be added to defaulters. The employee will be notified to submit the documents as soon as possible.</li>
+                <li>If employee is defaulter, it would depend on senior management to grant him with provident fund with or without deduction depending upon his services.</li>
+            </ul>
+            <br />
+
+            <h3>GENERAL OR PERSONAL LOAN</h3>
+            <br />
+            <ul class="bullets">
+                <li>Loans will be interest free.</li>
+                <li>Maximum Loan granted will be ten times of the employee’s salary but not more than 10,000,000(ten crore rupees).</li>
+                <li>Number of installments for loan return must be chosen in a way that loan should be returned within 4 years.</li>
+                <li>Minimum installment will be of two thousand rupees.</li>
+                <li>Installments will be automatically deducted from the salary.</li>
+                <li>Installments should not exceed salary.</li>
+                <li>Agreement document template will be provided which contains terms regarding employee will pay the loan completely. Without paying loan, employee will not leave company. If employee left or some serious consequences occur and employee has opted provident fund, it will depend on senior management whether to confiscate provident fund or to grant him fund by deducting remaining loan money or to grant him provident fund without any deduction if only few installments are left by acknowledging the employee’s services. . If employee left or some serious consequences occur and employee has not opted provident fund, it would depend on senior management to take any legal action or not</li>
+                <li>Signed agreement document must be uploaded at time of applying for loan and the signed document must match the template provided.</li>
+                <li></li>
+            </ul>
+            <p class="para1">In case of any query, contact us via email or phone number. Contact and email are listed in contacts tab</p>
+            <br />
+            <a href=@Url.Action("welcome","loan") class="a">&#8678 Back</a>
+            <br />
+        </div>
+            </body>
+</html>
+}
+

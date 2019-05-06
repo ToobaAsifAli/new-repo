@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "prodocuments";
+}
+
+<head>
+    <style>
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+    </style>
+</head>
+<h2 style="padding-top:100px;text-align:center">Employees Against Provident Fund</h2>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th style="display:none;">
+            Id
+        </th>
+        <th style="display:none;">LoanApplyId</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Loan Money</th>
+        <th>Request Date</th>
+        <th>View Details</th>
+        <th>Edit Response</th>
+        
+
+    </tr>
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td style="display:none;">
+                @Model.Rows[i][0]
+            </td>
+            <td style="display:none;">@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
+       
+            <td>@Html.ActionLink("View Documents", "prodocumentsverify", new { @ide = @Model.Rows[i][0], @idee = @Model.Rows[i][1] }, null)</td>
+            <td>@Html.ActionLink("Edit Response", "prodocumentsverify", new { @ide = @Model.Rows[i][0], @idee = @Model.Rows[i][1] }, null)</td>
+
+        </tr>
+    }
+</table>
+
+
+
+

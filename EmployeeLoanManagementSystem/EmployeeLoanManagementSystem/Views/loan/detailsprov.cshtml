@@ -1,0 +1,103 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "detailsprov";
+}
+
+<head>
+    <style>
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+    </style>
+</head>
+@Html.BeginForm("Edetails", "HR", FormMethod.Post)
+ {
+@Html.AntiForgeryToken()
+
+<body>
+
+
+
+
+    <h2 style="padding-top:80px;text-align:center">Details</h2>
+
+    <div class="container">
+        <table class="table table-bordered table-striped" style="align-content:center">
+
+            @for (int i = 0; i < Model.Rows.Count; i++)
+            {
+                <tr>
+                    <th style="display:none;">LoanApplyId: </th>
+                    <td style="display:none;">@Model.Rows[i][0]</td>
+                </tr>
+                <tr>
+                    <th style="display:none;">EmployeeId: </th>
+                    <td style="display:none;">@Model.Rows[i][1]</td>
+                </tr>
+                <tr>
+                    <th>Name:</th>
+                    <td>@Model.Rows[i][2]</td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>@Model.Rows[i][3]</td>
+                </tr>
+                <tr>
+                    <th>Salary:</th>
+                    <td>@Model.Rows[i][4]</td>
+                </tr>
+                <tr>
+                    <th>Loan Money:</th>
+                    <td>@Model.Rows[i][5]</td>
+                </tr>
+                <tr>
+                    <th>Request Date:</th>
+                    <td>@Model.Rows[i][6]</td>
+                </tr>
+                <tr>
+                    <th>Request Status:</th>
+                    <td>@Model.Rows[i][7]</td>
+                </tr>
+                <tr>
+                    <th>Reason:</th>
+                    <td>@Model.Rows[i][8]</td>
+                </tr>
+                <tr>
+                    <th>Loan for Property:</th>
+                    <td>@Model.Rows[i][9]</td>
+                </tr>
+                <tr>
+                    <th>Loan for Automobile:</th>
+                    <td>@Model.Rows[i][10]</td>
+                </tr>
+                <tr>
+                    <th>Number Of Installments:</th>
+                    <td>@Model.Rows[i][11]</td>
+                </tr>
+                <tr>
+                    <th>Installments Money:</th>
+                    <td>@Model.Rows[i][12]</td>
+                </tr>
+                <tr>
+                    <th>Installment Start Date:</th>
+                    <td>@Model.Rows[i][13]</td>
+                </tr>
+                <tr>
+                    <th>Installment End Date:</th>
+                    <td>@Model.Rows[i][14]</td>
+                </tr>
+
+
+
+            }
+        </table>
+        <br />
+
+
+</body>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

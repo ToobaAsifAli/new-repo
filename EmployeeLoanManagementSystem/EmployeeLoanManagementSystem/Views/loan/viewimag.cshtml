@@ -1,0 +1,92 @@
+﻿@model System.Data.DataTable
+@using System.Runtime.Serialization;
+@using System.Runtime.Serialization.Formatters.Binary;
+@{
+    ViewBag.Title = "viewimag";
+}
+
+
+
+
+<head>
+    <style>
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+    </style>
+</head>
+@using (Html.BeginForm())
+{
+    <h2 style="padding-top:80px;text-align:center">View Documents Images For Provident Fund</h2>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th style="display:none">
+                Loan Apply Id
+            </th>
+            <th>Property Document</th>
+            <th>Automobile Document</th>
+            <th>Documents Submission Date</th>
+            <th>Edit</th>
+
+            <th>Delete</th>
+          
+
+
+        </tr>
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+        <tr>
+            <td name="loanid" style="display:none">@Model.Rows[i][0]</td>
+            <td name="prop">
+                @{
+                    if (@Model.Rows[i][1].ToString() != "" && @Model.Rows[i][1].ToString() != null)
+                    {
+                        string s = @Model.Rows[i][1].ToString();
+
+
+
+
+                        <a href="@s" style="height:100%;width:100%">
+                            <centre> <img align="middle" src="@s" style="height:150px;width:250px"></centre>
+                        </a>
+                    }
+
+
+                }
+
+
+            </td>
+            <td>
+                @{
+
+                    if (@Model.Rows[i][2].ToString() != "" && @Model.Rows[i][2].ToString() != null)
+                    {
+                        string s = @Model.Rows[i][2].ToString();
+
+
+
+
+                        <a href="@s" style="height:100%;width:100%">
+                            <centre> <img align="middle" src="@s" style="height:150px;width:250px"></centre>
+                        </a>
+                        }
+                    }
+                </td>
+            
+                  
+            <td>
+                @if (Model.Rows[i][2].ToString() != "" || Model.Rows[i][1].ToString() != "")
+                {
+            @Model.Rows[i][3]  
+                }
+            </td>
+                    <td>@Html.ActionLink("Edit", "documentsverification", new { @ide = @Model.Rows[i][0] }, null)</td>
+                    <td>@Html.ActionLink("Delete", "Deletedoc", "loan", new { @ide = @Model.Rows[i][0] }, null)</td>
+                   
+                </tr>
+    }
+    </table>
+}
+
+

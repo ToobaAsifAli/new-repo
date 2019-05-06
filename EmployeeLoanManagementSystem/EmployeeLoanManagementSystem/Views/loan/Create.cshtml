@@ -1,0 +1,262 @@
+﻿@model EmployeeLoanManagementSystem.Models.LoanApply
+
+@{
+    ViewBag.Title = "Create";
+}
+<head>
+    <style type="text/css">
+
+        body {
+        }
+
+        .container {
+            overflow: auto;
+        }
+
+        .registration {
+            color: black;
+            font-size: 40px;
+            font-family: Agency FB;
+            font-weight: 700;
+            border-bottom-style: ridge;
+        }
+
+        .row {
+        }
+
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0,0,0,.5);
+            -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+        }
+
+
+        .btn.hover {
+            background-color: aqua;
+        }
+
+        label {
+            font-size: 22px;
+        }
+
+        .btn-danger {
+            border-radius: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+                function instalno()
+                {
+                    var a = document.getElementById("loanreq").value;
+                    var j = 60;
+                    var c;
+                    var b = parseInt(a / j);
+                    if (b < 2000) {
+                        c = 2000 - b;
+                        b = b + c;
+                    }
+                    var instalacq = document.getElementById('instalacq');
+                    instalacq.value = b;
+                    var instalacq1 = document.getElementById('maxinstal');
+
+                    var instalacq2 = document.getElementById('instalacq');
+                    instalacq1.value = 60;
+
+
+                }
+                
+    </script>
+    <script type="text/javascript">
+        function instalno1() {
+            var a = document.getElementById('loanreq').value;
+            var c = document.getElementById('instalmoney').value;
+            document.getElementById('in').value = parseInt(a / c);
+           // d.value = Math.floor(a / c);
+
+        }
+    </script>
+</head>
+
+
+@using (Html.BeginForm("Create","loan",FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <html>
+    <body>
+        <div class="container">
+
+
+            <div class="col-md-8 col-md-offset-3">
+                <img src="/images/syslogo.png" align="left" style="height:140px; padding-top:15px;padding-left:350px">
+            </div>
+            <center style="text-align:center ;
+	padding-top: 130px;padding-bottom:20px"><b class="registration">LOAN APPLICATION FORM</b></center>
+            <hr />
+            <div class="col-lg-6 col-md-offset-3">
+                <h4 align="left"> CONTACT INFORMATION</h4>
+                <hr />
+
+                <div class="form-group">
+                    <h5>First Name :</h5>
+                    <input type="text" name="name" value=@ViewBag.nam style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <div class="form-group">
+                    <h5>Last Name :</h5>
+                    <input type="text" name="name" value=@ViewBag.nam1 style="font-size: 20px;height:50px;width:550px" readonly />
+                </div>
+                <div class="form-group">
+                    <h5>Email :</h5>
+                    <input type="text" name="email" value=@ViewBag.em style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+
+
+                <div class="form-group">
+                    <h5>Contact No  :</h5>
+                    <input type="text" name="contact" value=@ViewBag.con style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <hr />
+                <h4 align="left"> EMPLOYEE INFORMATION</h4>
+                <hr />
+                <div class="form-group">
+                    <h5>Designation  :</h5>
+                    <input type="text" name="designation" value=@ViewBag.des style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <div class="form-group">
+                    <h5>Department  :</h5>
+                    <input type="text" name="department" value=@ViewBag.dep style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <div class="form-group">
+                    <h5>Monthly Income  :</h5>
+                    <input type="text" name="income" value=@ViewBag.sal style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <div class="form-group">
+                    <h5>Provident Fund  :</h5>
+                    <input type="text" name="fund" value=@ViewBag.prov style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <div class="form-group">
+                    <h5>Account No.  :</h5>
+                    <input type="text" name="account" value=@ViewBag.acc style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <hr />
+                <h4 align="left">APPLY FOR LOAN</h4>
+                <hr />
+                <div class="form-group">
+                    <h5>Loan Category :</h5>
+                    <br />
+                    <p style="font-size: 15px">
+                        Loan Against Provident Fund
+                        @Html.RadioButton("Category", "AgainstProvidentFund")
+                        <br />
+                    <p style="font-size: 15px">
+                        General Loan
+                        @Html.RadioButton("Category", "General")
+                        @*<input align="left" type="radio" name="provident" style="height:30px;width:50px" class="PFUND" /><p style="font-size: 15px">
+                    Loan Against Provident Fund<br>
+                    <input align="left" type="radio" name="general" style="height:30px;width:50px" class="General" />
+                <p style="font-size: 15px">General Loan<br>*@
+                </div>
+                <div class="form-group">
+                    <h5>Loan Purpose :</h5>
+                    <br />
+                    <p style="" font-size: 15px">You are required to select the category written below if you have choosen loan against provident fund</p><br />
+                    <p style="font-size: 15px">Property @Html.RadioButton("Purpose", "Property")
+                    <p style="font-size: 15px">
+                        AutoMobile @Html.RadioButton("Purpose", "Automobile")
+
+                </div>
+                <div class="form-group">
+                    <h5>Maximum General Loan Granted  :</h5>
+                    <input type="number" name="maxloan" value=@ViewBag.sal style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <div class="form-group">
+                    <h5>Maximum Loan Against Provident Fund Granted  :</h5>
+                    <input type="number" name="maxloan1" value=@ViewBag.prov style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <div class="form-group">
+                    <h5> Loan Requested  :</h5>
+                    <input type="number" name="loanreq" id="loanreq" oninput="instalno()" style="font-size: 20px;height:50px;width:550px" />
+                </div>
+
+                <div class="form-group">
+                    <h5> Maximum Number Of Installments  :</h5>
+                    <input type="number" name="maxinstal" id="maxinstal" style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <div class="form-group">
+                    <h5> Least Installments Money Acquired  :</h5>
+                    <input type="number" name="instalacq" id="instalacq"  style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+
+                <div class="form-group">
+                    <h5> Installments Money  :</h5>
+                    <input type="number" name="instalmoney" id="instalmoney" oninput="instalno1()" style="font-size: 20px;height:50px;width:550px" />
+                </div>
+                <div class="form-group">
+                    <h5> Number Of Installments Acquired  :</h5>
+                    <input type="number" name="in" id="in" style="font-size: 20px;height:50px;width:550px" readonly/>
+                </div>
+                <hr />
+                <h4 align="left">ACKNOWLEDGEMENT</h4>
+                <hr />
+                <div class="form-group">
+
+                    <p style="" font-size: 15px">I hereby agree that the information given is true, accurate and complete as of the date of this application submission </p><br />
+                    <p style="font-size: 15px">Yes<input align="left" type="radio" name="ack" style=" height:30px;width:50px" class="Male" value="Yes" />
+                    <p style="font-size: 15px">No<input align="left" type="radio" name="ack" style=" height:30px;width:50px" class="Male" value="No" checked/>
+                </div>
+                <div class="form-group">
+                    <p>The employee needs to download the template. Print it and fill it. Upload the image of the filled agreement document  in the upload button tab below</p>
+                    <a href="~/LoanApplies/Download">
+                        <input class="btn " style="font-family:Arial;font-size:12px;height:50px;width:160px" type="button" value="Download" />
+                    </a>
+                </div>
+                @* @using (Html.BeginForm("docupload", "Upload Image Here", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+                <div class="form-group">
+                    <p>Upload the image of the filled agreement document  in the upload button tab below</p>
+                    <input type="file" id="image1" name="image1" />
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+
+                    </div>
+                </div>
+                @* @if (TempData["Success"] != null)
+        {
+            <p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
+        }*@
+                <!-- <div class="form-group">
+                    <a href="~/Admin/Dashboard">
+                        <input class="btn " style="font-family:Arial;font-size:18px;height:50px;width:120px" type="button" value="Log In" />
+                    </a>
+                    <a href="~/Admin/Reset">
+                        <input class="btn " style="font-family:Arial;font-size:18px;height:50px;width:150px" type="button" value="Reset Password" />
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>-->
+            </div>
+        </div>
+
+    </body>
+</html>
+}
+    <div>
+        @ViewBag.Error
+    </div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

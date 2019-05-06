@@ -1,0 +1,293 @@
+﻿
+@{
+    ViewBag.Title = "loanstat";
+}
+
+
+<head>
+    <style type="text/css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" >
+        <style >
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        .image {
+            opacity: 1;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .image1 {
+            opacity: 1;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+
+
+        .image:hover {
+            opacity: 0.3;
+        }
+
+
+        .image1:hover {
+            opacity: 0.3;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            text-align: center
+        }
+
+            .middle:hover {
+                opacity: 1;
+            }
+
+        .text1 {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 16px 32px
+        }
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @@-webkit-keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @@keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        /* On smaller screens, decrease text size */
+        @@media only screen and (max-width: 300px) {
+            .text {
+                font-size: 11px
+            }
+        }
+
+        body {
+        }
+
+        .container {
+            overflow: auto;
+        }
+
+        .registration {
+            color: black;
+            font-size: 40px;
+            font-family: Agency FB;
+            font-weight: 700;
+            border-bottom-style: ridge;
+        }
+
+        .row {
+        }
+
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+        .HEADING:hover{
+           color:cadetblue
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0,0,0,.5);
+            -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+        }
+
+        .a:hover {
+            background-color: #009688;
+        }
+
+        .w3-teal {
+            height: 50px;
+        }
+
+        .btn.hover {
+            background-color: aqua;
+        }
+
+        label {
+            font-size: 22px;
+        }
+
+        .btn-danger {
+            border-radius: 0px;
+        }
+    </style>
+
+</head>
+
+
+<h2 style="padding-top:50px;padding-left:300px;color:#009688">WELCOME TO LOAN PROVIDER SYSTEM</h2>
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none;height:500px" id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large"
+                onclick="w3_close()">
+
+            Close &times;
+
+        </button>
+        <br />
+        <a href=@Url.Action("loanpolicies","loan") class="a">Loan Policies</a><br><br><br>
+        <a href=@Url.Action("instructions","loan") class="a">Apply For Loan</a><br><br><br>
+        <a href="" class="a">Loan History</a><br><br><br>
+        <a href="#" class="a">Loan Status</a><br><br><br>
+    </div>
+
+    <div id="main">
+
+        <div class="w3-teal">
+            <button id="openNav" class="w3-button w3-teal w3-xlarge" style="" onclick="w3_open()">&#9776;</button>
+            <div class="w3-container">
+                @*<h3 style="padding-top:50px">LOAN CATEGORY</h3>*@
+            </div>
+        </div>
+        <div class="w3-container">
+            <b>
+                <p style="font-size:16px ;color: #009688;padding-bottom:20px">
+                    Choose the loan category in which you want to view your loan status
+                    </p>
+            </b>
+        </div>
+
+    </div>
+    <div class="container" style="width: 100%;">
+        <div class="theme-table-image col-sm-6" style="">
+            <a href=@Url.Action("general","loan")>
+                <img src="/images/personal.jpg" style="height:300px;width:550px" class="image">
+            </a>
+            <a href=@Url.Action("general","loan")>
+                <H4 style="text-align:center"class="HEADING">PERSONAL LOAN</H4>
+                </a>
+
+
+        </div>
+
+        <div class="theme-table-image col-sm-offset-6">
+            <a href=@Url.Action("provident","loan")>
+                <img src="/images/provident.jpg" style="height:300px;width:550px" class="image1">
+            </a>
+            <a href=@Url.Action("provident","loan")>
+                <h4 style="text-align:center" class="HEADING">PROVIDENT FUND </h4>
+                </a>
+
+        </div>
+    </div>
+
+    <div class="w3-container">
+        <b>
+
+        </b>
+    </div>
+
+  
+
+    <script>
+        function w3_open() {
+            document.getElementById("main").style.marginLeft = "25%";
+            document.getElementById("mySidebar").style.width = "25%";
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("openNav").style.display = 'none';
+        }
+        function w3_close() {
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("openNav").style.display = "inline-block";
+        }
+    </script>
+
+</body>
+</html>
+
+
+

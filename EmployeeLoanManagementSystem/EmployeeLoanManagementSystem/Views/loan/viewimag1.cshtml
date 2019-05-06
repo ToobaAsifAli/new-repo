@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EmployeeLoanManagementSystem.Models.LoanDocumentVerify>
+
+@{
+    ViewBag.Title = "viewimag1";
+}
+
+<h2>viewimag1</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PropertyDocument)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutomobileDocument)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDefaulter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmissionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanApply.LoanForProperty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanRequestStatu.RequestStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           
+            @{
+                String img64 = Convert.ToBase64String(item.PropertyDocument);
+                String img64Url = string.Format("data:image/" + item.PropertyDocument + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+            }
+            <img src="@img64Url" />
+        </td>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDefaulter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmissionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanApply.LoanForProperty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoanRequestStatu.RequestStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LoanId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LoanId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LoanId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "instructions";
+}
+<head>
+    <style type="text/css">
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+
+        .bullets {
+        }
+
+            .bullets li {
+                list-style-type: circle;
+                font-size: 16px;
+                font-family: 'Times New Roman'
+            }
+
+        .para {
+            font-size: 16px;
+            font-family: 'Times New Roman'
+        }
+
+        .para1 {
+            font-size: 18px;
+            font-family: 'Times New Roman'
+        }
+    </style>
+</head>
+
+<h2 style="padding-top:100px">Instructions for Loan Application</h2>
+<p class="para1">Please read the instructions carefully before filling application form</p>
+
+<ul class="bullets">
+    <li>The employee's contact and office information will be already filled. In case of any issue, kindly contact use via email or phone number. Email and phone number are listed in contacts tab.</li>
+    <li>The employee need to select the loan category either he/she wants to take general loan or loan against provident fund.</li>
+    <li>If the employee chooses loan against provident fund, he/she needs to specify whether he/she is taking loan for automobile or property and needs to submit the automobile or property papers within a period of one month after loan has been granted.</li>
+    <li>If the employee opts general loan, no need to choose automobile or property option.</li>
+    <li>The maximum loan granted to the employee can be seen in the form so the employee needs to enter loan he/she wants within maximum loan limit</li>
+    <li>After the employee chooses the loan he/she needs to take, maximum number of installments will be shown in the form, the employee needs to choose the installments within limit of maximum installments</li>
+    <li>Installments money and starting and end date will be mentioned.</li>
+    <li>The employee must acknowledge that the information stated is correct. </li>
+    <li>The employee must then download the template , fill it and upload it</li>
+    <li>The employee must then submit it and he/she will be informed of the loan status via email</li>
+</ul>
+<br />
+<a href=@Url.Action("Create","loan",new { @email = User.Identity.Name  },null ) class="a" style="font-size:16px"">&#8680 Start Application Form</a>
+<br/>
+<a href=@Url.Action("welcome","loan") class="a" style="font-size:16px">&#8678 Back</a>
+<br />

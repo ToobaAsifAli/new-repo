@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB7ModelStoreContainer" CdmEntityContainer="DB7Entities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="DB7Model.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="DB7Model.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="DB7Model.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="ProvidentFundOpted" ColumnName="ProvidentFundOpted" />
+          <ScalarProperty Name="ProvidentFundAmount" ColumnName="ProvidentFundAmount" />
+          <ScalarProperty Name="ProvidentFundPercentage" ColumnName="ProvidentFundPercentage" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="ProvidentFundOptedDate" ColumnName="ProvidentFundOptedDate" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Installments">
+      <EntityTypeMapping TypeName="DB7Model.Installment">
+        <MappingFragment StoreEntitySet="Installment">
+          <ScalarProperty Name="InstallmentId" ColumnName="InstallmentId" />
+          <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+          <ScalarProperty Name="InstallmentsNo" ColumnName="InstallmentsNo" />
+          <ScalarProperty Name="InstallmentDate" ColumnName="InstallmentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoanApplies">
+      <EntityTypeMapping TypeName="DB7Model.LoanApply">
+        <MappingFragment StoreEntitySet="LoanApply">
+          <ScalarProperty Name="LoanApplyId" ColumnName="LoanApplyId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="LoanCategory" ColumnName="LoanCategory" />
+          <ScalarProperty Name="LoanMoney" ColumnName="LoanMoney" />
+          <ScalarProperty Name="NoOfInstallments" ColumnName="NoOfInstallments" />
+          <ScalarProperty Name="InstallmentStartDate" ColumnName="InstallmentStartDate" />
+          <ScalarProperty Name="InstallmentEndDate" ColumnName="InstallmentEndDate" />
+          <ScalarProperty Name="Template" ColumnName="Template" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="LoanAgreement" ColumnName="LoanAgreement" />
+          <ScalarProperty Name="LoanForProperty" ColumnName="LoanForProperty" />
+          <ScalarProperty Name="LoanForAutomobile" ColumnName="LoanForAutomobile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoanCategories">
+      <EntityTypeMapping TypeName="DB7Model.LoanCategory">
+        <MappingFragment StoreEntitySet="LoanCategory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoanRequestStatus">
+      <EntityTypeMapping TypeName="DB7Model.LoanRequestStatu">
+        <MappingFragment StoreEntitySet="LoanRequestStatus">
+          <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="RespondDate" ColumnName="RespondDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lookups">
+      <EntityTypeMapping TypeName="DB7Model.Lookup">
+        <MappingFragment StoreEntitySet="Lookup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoanDocumentVerifies">
+      <EntityTypeMapping TypeName="DB7Model.LoanDocumentVerify">
+        <MappingFragment StoreEntitySet="LoanDocumentVerify">
+          <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+          <ScalarProperty Name="PropertyDocument" ColumnName="PropertyDocument" />
+          <ScalarProperty Name="AutomobileDocument" ColumnName="AutomobileDocument" />
+          <ScalarProperty Name="IsDefaulter" ColumnName="IsDefaulter" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SubmissionDate" ColumnName="SubmissionDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB7Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Salary" Type="decimal" Precision="30" Scale="0" />
+          <Property Name="HireDate" Type="datetime" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="24" />
+          <Property Name="AccountNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="Gender" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="ProvidentFundOpted" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="ProvidentFundAmount" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProvidentFundPercentage" Type="real" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="ProvidentFundOptedDate" Type="datetime" />
+          <Property Name="CNIC" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsEmailSent" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Installment">
+          <Key>
+            <PropertyRef Name="InstallmentId" />
+          </Key>
+          <Property Name="InstallmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanId" Type="int" Nullable="false" />
+          <Property Name="InstallmentsNo" Type="int" />
+          <Property Name="InstallmentDate" Type="datetime" />
+          <Property Name="IsPaid" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="LoanApply">
+          <Key>
+            <PropertyRef Name="LoanApplyId" />
+          </Key>
+          <Property Name="LoanApplyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="LoanCategory" Type="int" Nullable="false" />
+          <Property Name="LoanMoney" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NoOfInstallments" Type="int" />
+          <Property Name="RequestDate" Type="datetime" Nullable="false" />
+          <Property Name="LoanForProperty" Type="nchar" MaxLength="1" />
+          <Property Name="LoanForAutomobile" Type="nchar" MaxLength="1" />
+          <Property Name="Installment Money" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="InstallmentStartDate" Type="datetime" />
+          <Property Name="InstallmentEndDate" Type="datetime" />
+          <Property Name="LoanAgreement" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LoanCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoanDocumentVerify">
+          <Key>
+            <PropertyRef Name="LoanId" />
+          </Key>
+          <Property Name="LoanId" Type="int" Nullable="false" />
+          <Property Name="IsDefaulter" Type="nchar" MaxLength="1" />
+          <Property Name="Reason" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="SubmissionDate" Type="datetime" />
+          <Property Name="PropertyDocument" Type="nvarchar(max)" />
+          <Property Name="AutomobileDocument" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LoanRequestStatus">
+          <Key>
+            <PropertyRef Name="LoanId" />
+          </Key>
+          <Property Name="LoanId" Type="int" Nullable="false" />
+          <Property Name="RequestStatus" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar(max)" />
+          <Property Name="RespondDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Employee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Installment_LoanApply">
+          <End Role="LoanApply" Type="Self.LoanApply" Multiplicity="1" />
+          <End Role="Installment" Type="Self.Installment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoanApply">
+              <PropertyRef Name="LoanApplyId" />
+            </Principal>
+            <Dependent Role="Installment">
+              <PropertyRef Name="LoanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanApply_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="LoanApply" Type="Self.LoanApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoanApply">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanApply_LoanCategory">
+          <End Role="LoanCategory" Type="Self.LoanCategory" Multiplicity="1" />
+          <End Role="LoanApply" Type="Self.LoanApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoanCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoanApply">
+              <PropertyRef Name="LoanCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanDocumentVerify_LoanApply">
+          <End Role="LoanApply" Type="Self.LoanApply" Multiplicity="1" />
+          <End Role="LoanDocumentVerify" Type="Self.LoanDocumentVerify" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LoanApply">
+              <PropertyRef Name="LoanApplyId" />
+            </Principal>
+            <Dependent Role="LoanDocumentVerify">
+              <PropertyRef Name="LoanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanDocumentVerify_LoanRequestStatus">
+          <End Role="LoanRequestStatus" Type="Self.LoanRequestStatus" Multiplicity="1" />
+          <End Role="LoanDocumentVerify" Type="Self.LoanDocumentVerify" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LoanRequestStatus">
+              <PropertyRef Name="LoanId" />
+            </Principal>
+            <Dependent Role="LoanDocumentVerify">
+              <PropertyRef Name="LoanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanRequestStatus_LoanApply">
+          <End Role="LoanApply" Type="Self.LoanApply" Multiplicity="1" />
+          <End Role="LoanRequestStatus" Type="Self.LoanRequestStatus" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LoanApply">
+              <PropertyRef Name="LoanApplyId" />
+            </Principal>
+            <Dependent Role="LoanRequestStatus">
+              <PropertyRef Name="LoanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB7ModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Installment" EntityType="Self.Installment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanApply" EntityType="Self.LoanApply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanCategory" EntityType="Self.LoanCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanDocumentVerify" EntityType="Self.LoanDocumentVerify" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanRequestStatus" EntityType="Self.LoanRequestStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Installment_LoanApply" Association="Self.FK_Installment_LoanApply">
+            <End Role="LoanApply" EntitySet="LoanApply" />
+            <End Role="Installment" EntitySet="Installment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanApply_Employee" Association="Self.FK_LoanApply_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="LoanApply" EntitySet="LoanApply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanApply_LoanCategory" Association="Self.FK_LoanApply_LoanCategory">
+            <End Role="LoanCategory" EntitySet="LoanCategory" />
+            <End Role="LoanApply" EntitySet="LoanApply" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanDocumentVerify_LoanApply" Association="Self.FK_LoanDocumentVerify_LoanApply">
+            <End Role="LoanApply" EntitySet="LoanApply" />
+            <End Role="LoanDocumentVerify" EntitySet="LoanDocumentVerify" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanDocumentVerify_LoanRequestStatus" Association="Self.FK_LoanDocumentVerify_LoanRequestStatus">
+            <End Role="LoanRequestStatus" EntitySet="LoanRequestStatus" />
+            <End Role="LoanDocumentVerify" EntitySet="LoanDocumentVerify" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanRequestStatus_LoanApply" Association="Self.FK_LoanRequestStatus_LoanApply">
+            <End Role="LoanApply" EntitySet="LoanApply" />
+            <End Role="LoanRequestStatus" EntitySet="LoanRequestStatus" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB7Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salary" Type="Decimal" Precision="30" Scale="0" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ProvidentFundOpted" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ProvidentFundAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProvidentFundPercentage" Type="Single" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="ProvidentFundOptedDate" Type="DateTime" Precision="3" />
+          <Property Name="CNIC" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsEmailSent" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="LoanApplies" Relationship="Self.FK_LoanApply_Employee" FromRole="Employee" ToRole="LoanApply" />
+        </EntityType>
+        <EntityType Name="Installment">
+          <Key>
+            <PropertyRef Name="InstallmentId" />
+          </Key>
+          <Property Name="InstallmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanId" Type="Int32" Nullable="false" />
+          <Property Name="InstallmentsNo" Type="Int32" />
+          <Property Name="InstallmentDate" Type="DateTime" Precision="3" />
+          <Property Name="IsPaid" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="LoanApply" Relationship="Self.FK_Installment_LoanApply" FromRole="Installment" ToRole="LoanApply" />
+        </EntityType>
+        <EntityType Name="LoanApply">
+          <Key>
+            <PropertyRef Name="LoanApplyId" />
+          </Key>
+          <Property Name="LoanApplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="LoanCategory" Type="Int32" Nullable="false" />
+          <Property Name="LoanMoney" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NoOfInstallments" Type="Int32" />
+          <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoanForProperty" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="LoanForAutomobile" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Installment_Money" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="InstallmentStartDate" Type="DateTime" Precision="3" />
+          <Property Name="InstallmentEndDate" Type="DateTime" Precision="3" />
+          <Property Name="LoanAgreement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_LoanApply_Employee" FromRole="LoanApply" ToRole="Employee" />
+          <NavigationProperty Name="Installments" Relationship="Self.FK_Installment_LoanApply" FromRole="LoanApply" ToRole="Installment" />
+          <NavigationProperty Name="LoanCategory1" Relationship="Self.FK_LoanApply_LoanCategory" FromRole="LoanApply" ToRole="LoanCategory" />
+          <NavigationProperty Name="LoanDocumentVerify" Relationship="Self.FK_LoanDocumentVerify_LoanApply" FromRole="LoanApply" ToRole="LoanDocumentVerify" />
+          <NavigationProperty Name="LoanRequestStatu" Relationship="Self.FK_LoanRequestStatus_LoanApply" FromRole="LoanApply" ToRole="LoanRequestStatus" />
+        </EntityType>
+        <EntityType Name="LoanCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LoanApplies" Relationship="Self.FK_LoanApply_LoanCategory" FromRole="LoanCategory" ToRole="LoanApply" />
+        </EntityType>
+        <EntityType Name="LoanDocumentVerify">
+          <Key>
+            <PropertyRef Name="LoanId" />
+          </Key>
+          <Property Name="LoanId" Type="Int32" Nullable="false" />
+          <Property Name="IsDefaulter" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="SubmissionDate" Type="DateTime" Precision="3" />
+          <Property Name="PropertyDocument" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AutomobileDocument" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LoanApply" Relationship="Self.FK_LoanDocumentVerify_LoanApply" FromRole="LoanDocumentVerify" ToRole="LoanApply" />
+          <NavigationProperty Name="LoanRequestStatu" Relationship="Self.FK_LoanDocumentVerify_LoanRequestStatus" FromRole="LoanDocumentVerify" ToRole="LoanRequestStatus" />
+        </EntityType>
+        <EntityType Name="LoanRequestStatu">
+          <Key>
+            <PropertyRef Name="LoanId" />
+          </Key>
+          <Property Name="LoanId" Type="Int32" Nullable="false" />
+          <Property Name="RequestStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RespondDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="LoanApply" Relationship="Self.FK_LoanRequestStatus_LoanApply" FromRole="LoanRequestStatus" ToRole="LoanApply" />
+          <NavigationProperty Name="LoanDocumentVerify" Relationship="Self.FK_LoanDocumentVerify_LoanRequestStatus" FromRole="LoanRequestStatus" ToRole="LoanDocumentVerify" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Employee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanApply_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="LoanApply" Type="Self.LoanApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoanApply">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Installment_LoanApply">
+          <End Role="LoanApply" Type="Self.LoanApply" Multiplicity="1" />
+          <End Role="Installment" Type="Self.Installment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoanApply">
+              <PropertyRef Name="LoanApplyId" />
+            </Principal>
+            <Dependent Role="Installment">
+              <PropertyRef Name="LoanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanApply_LoanCategory">
+          <End Role="LoanCategory" Type="Self.LoanCategory" Multiplicity="1" />
+          <End Role="LoanApply" Type="Self.LoanApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoanCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoanApply">
+              <PropertyRef Name="LoanCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanDocumentVerify_LoanApply">
+          <End Role="LoanApply" Type="Self.LoanApply" Multiplicity="1" />
+          <End Role="LoanDocumentVerify" Type="Self.LoanDocumentVerify" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LoanApply">
+              <PropertyRef Name="LoanApplyId" />
+            </Principal>
+            <Dependent Role="LoanDocumentVerify">
+              <PropertyRef Name="LoanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanRequestStatus_LoanApply">
+          <End Role="LoanApply" Type="Self.LoanApply" Multiplicity="1" />
+          <End Role="LoanRequestStatus" Type="Self.LoanRequestStatu" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LoanApply">
+              <PropertyRef Name="LoanApplyId" />
+            </Principal>
+            <Dependent Role="LoanRequestStatus">
+              <PropertyRef Name="LoanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanDocumentVerify_LoanRequestStatus">
+          <End Role="LoanRequestStatus" Type="Self.LoanRequestStatu" Multiplicity="1" />
+          <End Role="LoanDocumentVerify" Type="Self.LoanDocumentVerify" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LoanRequestStatus">
+              <PropertyRef Name="LoanId" />
+            </Principal>
+            <Dependent Role="LoanDocumentVerify">
+              <PropertyRef Name="LoanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB7Entities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Installments" EntityType="Self.Installment" />
+          <EntitySet Name="LoanApplies" EntityType="Self.LoanApply" />
+          <EntitySet Name="LoanCategories" EntityType="Self.LoanCategory" />
+          <EntitySet Name="LoanDocumentVerifies" EntityType="Self.LoanDocumentVerify" />
+          <EntitySet Name="LoanRequestStatus" EntityType="Self.LoanRequestStatu" />
+          <EntitySet Name="Lookups" EntityType="Self.Lookup" />
+          <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanApply_Employee" Association="Self.FK_LoanApply_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="LoanApply" EntitySet="LoanApplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Installment_LoanApply" Association="Self.FK_Installment_LoanApply">
+            <End Role="LoanApply" EntitySet="LoanApplies" />
+            <End Role="Installment" EntitySet="Installments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanApply_LoanCategory" Association="Self.FK_LoanApply_LoanCategory">
+            <End Role="LoanCategory" EntitySet="LoanCategories" />
+            <End Role="LoanApply" EntitySet="LoanApplies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanDocumentVerify_LoanApply" Association="Self.FK_LoanDocumentVerify_LoanApply">
+            <End Role="LoanApply" EntitySet="LoanApplies" />
+            <End Role="LoanDocumentVerify" EntitySet="LoanDocumentVerifies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanRequestStatus_LoanApply" Association="Self.FK_LoanRequestStatus_LoanApply">
+            <End Role="LoanApply" EntitySet="LoanApplies" />
+            <End Role="LoanRequestStatus" EntitySet="LoanRequestStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanDocumentVerify_LoanRequestStatus" Association="Self.FK_LoanDocumentVerify_LoanRequestStatus">
+            <End Role="LoanRequestStatus" EntitySet="LoanRequestStatus" />
+            <End Role="LoanDocumentVerify" EntitySet="LoanDocumentVerifies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB7ModelStoreContainer" CdmEntityContainer="DB7Entities4">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="DB7Model.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="DB7Model.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DB7Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ProvidentFundOpted" ColumnName="ProvidentFundOpted" />
+                <ScalarProperty Name="ProvidentFundAmount" ColumnName="ProvidentFundAmount" />
+                <ScalarProperty Name="ProvidentFundPercentage" ColumnName="ProvidentFundPercentage" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="ProvidentFundOptedDate" ColumnName="ProvidentFundOptedDate" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsEmailSent" ColumnName="IsEmailSent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Installments">
+            <EntityTypeMapping TypeName="DB7Model.Installment">
+              <MappingFragment StoreEntitySet="Installment">
+                <ScalarProperty Name="InstallmentId" ColumnName="InstallmentId" />
+                <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+                <ScalarProperty Name="InstallmentsNo" ColumnName="InstallmentsNo" />
+                <ScalarProperty Name="InstallmentDate" ColumnName="InstallmentDate" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanApplies">
+            <EntityTypeMapping TypeName="DB7Model.LoanApply">
+              <MappingFragment StoreEntitySet="LoanApply">
+                <ScalarProperty Name="LoanApplyId" ColumnName="LoanApplyId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="LoanCategory" ColumnName="LoanCategory" />
+                <ScalarProperty Name="LoanMoney" ColumnName="LoanMoney" />
+                <ScalarProperty Name="NoOfInstallments" ColumnName="NoOfInstallments" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="LoanForProperty" ColumnName="LoanForProperty" />
+                <ScalarProperty Name="LoanForAutomobile" ColumnName="LoanForAutomobile" />
+                <ScalarProperty Name="Installment_Money" ColumnName="Installment Money" />
+                <ScalarProperty Name="InstallmentStartDate" ColumnName="InstallmentStartDate" />
+                <ScalarProperty Name="InstallmentEndDate" ColumnName="InstallmentEndDate" />
+                <ScalarProperty Name="LoanAgreement" ColumnName="LoanAgreement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanCategories">
+            <EntityTypeMapping TypeName="DB7Model.LoanCategory">
+              <MappingFragment StoreEntitySet="LoanCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanDocumentVerifies">
+            <EntityTypeMapping TypeName="DB7Model.LoanDocumentVerify">
+              <MappingFragment StoreEntitySet="LoanDocumentVerify">
+                <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+                <ScalarProperty Name="IsDefaulter" ColumnName="IsDefaulter" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SubmissionDate" ColumnName="SubmissionDate" />
+                <ScalarProperty Name="PropertyDocument" ColumnName="PropertyDocument" />
+                <ScalarProperty Name="AutomobileDocument" ColumnName="AutomobileDocument" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanRequestStatus">
+            <EntityTypeMapping TypeName="DB7Model.LoanRequestStatu">
+              <MappingFragment StoreEntitySet="LoanRequestStatus">
+                <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+                <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RespondDate" ColumnName="RespondDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lookups">
+            <EntityTypeMapping TypeName="DB7Model.Lookup">
+              <MappingFragment StoreEntitySet="Lookup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,122 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "viewreq";
+}
+
+<head>
+    <style>
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+    </style>
+</head>
+@Html.BeginForm()
+ {
+@Html.AntiForgeryToken()
+
+<body>
+
+
+
+
+    <h2 style="padding-top:80px;text-align:center">Details</h2>
+
+    <div class="container">
+        <table class="table table-bordered table-striped" style="align-content:center">
+
+            @for (int i = 0; i < Model.Rows.Count; i++)
+            {
+                <tr>
+                    <th style="display:none;">Employeeid: </th>
+                    <td style="display:none;">@Model.Rows[i][0]</td>
+                </tr>
+                <tr>
+                    <th style="display:none;">Loanapplyid: </th>
+                    <td style="display:none;">@Model.Rows[i][1]</td>
+                </tr>
+                <tr>
+                    <th>Name:</th>
+                    <td>@Model.Rows[i][2]</td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>@Model.Rows[i][3]</td>
+                </tr>
+                <tr>
+                    <th>Salary:</th>
+                    <td>@Model.Rows[i][4]</td>
+                </tr>
+                <tr>
+                    <th>Department:</th>
+                    <td>@Model.Rows[i][5]</td>
+                </tr>
+                <tr>
+                    <th>Designation:</th>
+                    <td>@Model.Rows[i][6]</td>
+                </tr>
+                <tr>
+                    <th>Hire Date:</th>
+                    <td>@Model.Rows[i][7]</td>
+                </tr>
+                <tr>
+                    <th>Loan Category:</th>
+                    <td>@Model.Rows[i][8]</td>
+                </tr>
+                <tr>
+                    <th>Loan Money:</th>
+                    <td>@Model.Rows[i][9]</td>
+                </tr>
+
+                <tr>
+                    <th>Request Date:</th>
+                    <td>@Model.Rows[i][10]</td>
+                </tr>
+
+                <tr>
+                    <th>Number Of Installments:</th>
+                    <td>@Model.Rows[i][11]</td>
+                </tr>
+                <tr>
+                    <th>Installment Money:</th>
+                    <td>@Model.Rows[i][12]</td>
+                </tr>
+                <tr>
+                    <th>Loan Agreement:</th>
+                    <td>
+                        @{ 
+                            string s = @Model.Rows[i][13].ToString();
+
+
+
+
+                        <a href="@s" style="height:100%;width:100%">
+                            <centre> <img align="middle" src="@s" style="height:150px;width:250px"></centre>
+                        </a>
+                            }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Request Status:</th>
+                    <td>  @Model.Rows[i][14]</td>
+                </tr>
+                <tr>
+                    <th>Reason Of Respond:</th>
+                    <td>   @Model.Rows[i][15]</td>
+                </tr>
+                <tr>
+                    <th>Respond Date:</th>
+                    <td>   @Model.Rows[i][16]</td>
+                </tr>
+            }
+        </table>
+     
+       
+
+</body>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

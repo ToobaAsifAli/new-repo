@@ -1,0 +1,51 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "employeeloan";
+}
+<head>
+    <style>
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+    </style>
+</head>
+<h2 style="padding-top:100px;text-align:center">Employees Loan Status</h2>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th style="display:none;">
+            Id
+        </th>
+  
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department Name</th>
+        <th>Designation</th>
+        
+
+        <th>Generate Report</th>
+    </tr>
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+    <tr>
+        <td style="display:none;">
+            @Model.Rows[i][0]
+        </td>
+       
+        <td>@Model.Rows[i][1]</td>
+        <td>@Model.Rows[i][2]</td>
+        <td>@Model.Rows[i][3]</td>
+        <td>@Model.Rows[i][4]</td>
+      
+        <td>@Html.ActionLink("loan History", "specemploanhistory", new { @ide = @Model.Rows[i][0]}, null)</td>
+
+    </tr>
+    }
+</table>
+
+
+
+
+
+
+

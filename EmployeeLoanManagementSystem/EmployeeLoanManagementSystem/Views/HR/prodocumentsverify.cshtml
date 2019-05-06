@@ -1,0 +1,129 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "prodocumentsverify";
+}
+<head>
+    <style>
+        nav.navbar.bootsnav.navbar-fixed {
+            overflow: scroll;
+            height: 100%;
+        }
+    </style>
+</head>
+@Html.BeginForm("prodocumentsverify", "HR", FormMethod.Post)
+ {
+@Html.AntiForgeryToken()
+
+<body>
+
+
+
+
+    <h2 style="padding-top:80px;text-align:center">Provident Fund Documents</h2>
+
+    <div class="container">
+        <table class="table table-bordered table-striped" style="align-content:center">
+
+            @for (int i = 0; i < Model.Rows.Count; i++)
+            {
+                <tr>
+                    <th style="display:none;">LoanApplyId: </th>
+                    <td style="display:none;">@Model.Rows[i][0]</td>
+                </tr>
+                <tr>
+                    <th style="display:none;">EmployeeId: </th>
+                    <td style="display:none;">@Model.Rows[i][1]</td>
+                </tr>
+                <tr>
+                    <th>Name:</th>
+                    <td>@Model.Rows[i][2]</td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>@Model.Rows[i][3]</td>
+                </tr>
+                <tr>
+                    <th>Loan Money:</th>
+                    <td>@Model.Rows[i][4]</td>
+                </tr>
+                <tr>
+                    <th>Request Date:</th>
+                    <td>@Model.Rows[i][5]</td>
+                </tr>
+                <tr>
+                    <th>Property Document</th>
+                    <td>
+                        @if (@Model.Rows[i][10].ToString() != "")
+                        {
+                            string s = @Model.Rows[i][10].ToString();
+
+
+
+
+
+
+                            <a href="@s" style="height:100%;width:100%">
+                                <centre> <img align="middle" src="@s" style="height:150px;width:250px"></centre>
+                            </a>
+
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>Automobile Document</th>
+                    <td>
+                        @if (@Model.Rows[i][11].ToString() != "")
+                        {
+                            string s = @Model.Rows[i][11].ToString();
+
+
+
+
+
+
+                            <a href="@s" style="height:100%;width:100%">
+                                <centre> <img align="middle" src="@s" style="height:150px;width:250px"></centre>
+                            </a>
+
+                        }
+                    </td>
+                    </tr>
+                <tr>
+                    <th>Submission Date:</th>
+                    <td>@Model.Rows[i][12]</td>
+                </tr>
+                <tr>
+                    <th>Is Defaulter:</th>
+                    <td>@Model.Rows[i][13]</td>
+                </tr>
+
+                <tr>
+                    <th>Documents Status:</th>
+                    <td>  @Html.DropDownList("choice")</td>
+                </tr>
+                <tr>
+                    <th>Reason Of Respond:</th>
+                    <td>   <input type="text" name="Reason" style="font-size: 20px;height:50px;width:900px" /></td>
+                </tr>
+                
+            }
+        </table>
+        <br />
+        <div class="form-group">
+            @*  @Html.DropDownList("Request Status", ViewBag.choice as SelectList, "Pending")
+            @Html.DropDownList("choice", "Request Status")
+            <h5>Reason:</h5>
+            <input type="text" name="Reason" style="font-size: 20px;height:50px;width:550px" />
+        </div>*@
+            <div>
+
+                <input type="submit" class="btn btn-default" style="font-family:Arial;font-size:12px;height:50px;width:160px" value="Submit" />
+
+            </div>
+        </div>
+
+</body>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
